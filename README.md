@@ -4,6 +4,20 @@ A production-ready, lightweight system monitoring suite featuring a Node.js + Ex
 
 ---
 
+## Features
+
+- Real-time CPU Monitoring
+- Memory Monitoring
+- Disk Usage Monitoring
+- Network Traffic Monitoring
+- System Uptime
+- REST APIs
+- AI-powered Health Diagnosis
+- Responsive Dashboard
+- Modular Backend Architecture
+
+---
+
 ## Architecture Overview
 
 The system is split into a modular backend agent and a sleek frontend dashboard:
