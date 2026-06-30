@@ -8,30 +8,7 @@ A production-ready, lightweight system monitoring suite featuring a Node.js + Ex
 
 The system is split into a modular backend agent and a sleek frontend dashboard:
 
-```mermaid
-graph TD
-    subgraph Host System
-        HW[Hardware Resource Specs]
-    end
-    subgraph Backend Agent (Port 3000)
-        BC[Background Collector] -->|Queries every 5s| SI[systeminformation Library]
-        SI -->|Returns specs| BC
-        BC -->|Pushes updates| MS[Metrics Memory Cache]
-        MS -->|Persists latest snapshot| MJ[metrics.json Storage]
-        
-        R_Health[GET /health] -->|Returns status & uptime| API[Express REST API]
-        R_Metrics[GET /metrics] -->|Reads metrics.json| API
-        R_Summary[GET /summary] -->|Passes stats to SDK| Gemini[Gemini 3.5 Flash]
-        Gemini -->|Returns JSON Summary| R_Summary
-    end
-    subgraph Frontend Dashboard (Port 5173)
-        React[React Client] -->|Polls every 5s| R_Metrics
-        React -->|Queries on load/manual| R_Summary
-        React -->|Queries once| R_Health
-    end
-    
-    HW -->|Hardware Calls| SI
-```
+![System Architecture Diagram](./system_architecture.png)
 
 ### Key Components
 
