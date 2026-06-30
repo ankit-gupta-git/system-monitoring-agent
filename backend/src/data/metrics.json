@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-06-30T21:38:24.465Z",
+  "uptime": 40752,
+  "cpu": {
+    "currentLoad": 17.66,
+    "currentLoadUser": 11.84,
+    "currentLoadSystem": 5.63,
+    "currentLoadIdle": 82.34,
+    "cores": [
+      {
+        "core": 0,
+        "load": 22.08
+      },
+      {
+        "core": 1,
+        "load": 12.46
+      },
+      {
+        "core": 2,
+        "load": 16.51
+      },
+      {
+        "core": 3,
+        "load": 14.64
+      },
+      {
+        "core": 4,
+        "load": 17.14
+      },
+      {
+        "core": 5,
+        "load": 13.7
+      },
+      {
+        "core": 6,
+        "load": 17.72
+      },
+      {
+        "core": 7,
+        "load": 15.59
+      },
+      {
+        "core": 8,
+        "load": 30.21
+      },
+      {
+        "core": 9,
+        "load": 13.08
+      },
+      {
+        "core": 10,
+        "load": 26.79
+      },
+      {
+        "core": 11,
+        "load": 13.08
+      },
+      {
+        "core": 12,
+        "load": 22.36
+      },
+      {
+        "core": 13,
+        "load": 13.31
+      },
+      {
+        "core": 14,
+        "load": 17.67
+      },
+      {
+        "core": 15,
+        "load": 16.19
+      }
+    ]
+  },
+  "memory": {
+    "total": 16905814016,
+    "free": 2103861248,
+    "used": 14801952768,
+    "active": 14801952768,
+    "available": 2103861248,
+    "usagePercentage": 87.56
+  },
+  "filesystems": [
+    {
+      "fs": "C:",
+      "type": "NTFS",
+      "size": 367733837824,
+      "used": 344841289728,
+      "available": 22892548096,
+      "usePercentage": 93.77,
+      "mount": "C:"
+    },
+    {
+      "fs": "D:",
+      "type": "NTFS",
+      "size": 314571747328,
+      "used": 122520346624,
+      "available": 192051400704,
+      "usePercentage": 38.95,
+      "mount": "D:"
+    },
+    {
+      "fs": "E:",
+      "type": "NTFS",
+      "size": 314571747328,
+      "used": 112182718464,
+      "available": 202389028864,
+      "usePercentage": 35.66,
+      "mount": "E:"
+    }
+  ],
+  "network": [
+    {
+      "iface": "Wi-Fi",
+      "operstate": "up",
+      "rxBytes": 897124827,
+      "txBytes": 91231646,
+      "rxSec": 32299.223571570776,
+      "txSec": 57976.10989448537
+    }
+  ]
+}
