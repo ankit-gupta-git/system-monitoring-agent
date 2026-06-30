@@ -169,6 +169,23 @@ Once up, the services will be available at:
 
 ---
 
+## Screenshots
+
+### 1. Dashboard Overview
+![Dashboard Overview](./docs/screenshots/dashboard_overview.png)
+
+### 2. Gemini AI System Diagnosis
+![AI Diagnosis](./docs/screenshots/dashboard_overview.png)
+*(Provides live system evaluations and admin advice from Gemini 3.5 Flash)*
+
+### 3. Disk & Network Monitoring
+![Disk & Network Monitoring](./docs/screenshots/disk_network_monitoring.png)
+
+### 4. Diagnostics Loading State
+![Diagnostics Loading](./docs/screenshots/ai_diagnosis_loading.png)
+
+---
+
 ## Future Improvements
 
 1. **Visual Time-Series Graphs**: Implement charting widgets (e.g. `recharts` or `chart.js`) on the client to visualize resource changes over time.

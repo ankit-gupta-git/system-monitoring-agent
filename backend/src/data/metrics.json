@@ -1,103 +1,103 @@
 {
-  "timestamp": "2026-06-30T21:38:24.465Z",
-  "uptime": 40752,
+  "timestamp": "2026-06-30T22:33:49.563Z",
+  "uptime": 44077,
   "cpu": {
-    "currentLoad": 17.66,
-    "currentLoadUser": 11.84,
-    "currentLoadSystem": 5.63,
-    "currentLoadIdle": 82.34,
+    "currentLoad": 8.81,
+    "currentLoadUser": 4.38,
+    "currentLoadSystem": 4.13,
+    "currentLoadIdle": 91.19,
     "cores": [
       {
         "core": 0,
-        "load": 22.08
+        "load": 11.54
       },
       {
         "core": 1,
-        "load": 12.46
+        "load": 5
       },
       {
         "core": 2,
-        "load": 16.51
+        "load": 11.24
       },
       {
         "core": 3,
-        "load": 14.64
+        "load": 5.92
       },
       {
         "core": 4,
-        "load": 17.14
+        "load": 14.38
       },
       {
         "core": 5,
-        "load": 13.7
+        "load": 7.52
       },
       {
         "core": 6,
-        "load": 17.72
+        "load": 10.3
       },
       {
         "core": 7,
-        "load": 15.59
+        "load": 7.2
       },
       {
         "core": 8,
-        "load": 30.21
+        "load": 13.63
       },
       {
         "core": 9,
-        "load": 13.08
+        "load": 8.09
       },
       {
         "core": 10,
-        "load": 26.79
+        "load": 10.89
       },
       {
         "core": 11,
-        "load": 13.08
+        "load": 6.54
       },
       {
         "core": 12,
-        "load": 22.36
+        "load": 7.48
       },
       {
         "core": 13,
-        "load": 13.31
+        "load": 4.06
       },
       {
         "core": 14,
-        "load": 17.67
+        "load": 9.02
       },
       {
         "core": 15,
-        "load": 16.19
+        "load": 8.08
       }
     ]
   },
   "memory": {
     "total": 16905814016,
-    "free": 2103861248,
-    "used": 14801952768,
-    "active": 14801952768,
-    "available": 2103861248,
-    "usagePercentage": 87.56
+    "free": 1789018112,
+    "used": 15116795904,
+    "active": 15116795904,
+    "available": 1789018112,
+    "usagePercentage": 89.42
   },
   "filesystems": [
     {
       "fs": "C:",
       "type": "NTFS",
       "size": 367733837824,
-      "used": 344841289728,
-      "available": 22892548096,
-      "usePercentage": 93.77,
+      "used": 346460663808,
+      "available": 21273174016,
+      "usePercentage": 94.22,
       "mount": "C:"
     },
     {
       "fs": "D:",
       "type": "NTFS",
       "size": 314571747328,
-      "used": 122520346624,
-      "available": 192051400704,
-      "usePercentage": 38.95,
+      "used": 117087776768,
+      "available": 197483970560,
+      "usePercentage": 37.22,
       "mount": "D:"
     },
     {
@@ -114,10 +114,10 @@
     {
       "iface": "Wi-Fi",
       "operstate": "up",
-      "rxBytes": 897124827,
-      "txBytes": 91231646,
-      "rxSec": 32299.223571570776,
-      "txSec": 57976.10989448537
+      "rxBytes": 71354826,
+      "txBytes": 51554720,
+      "rxSec": 1227.2179847450823,
+      "txSec": 3173.825772782015
     }
   ]
 }
