@@ -30,7 +30,6 @@ router.get('/', async (req, res, next) => {
       });
     }
 
-    // Initialize the GoogleGenAI instance with the loaded API key
     const ai = new GoogleGenAI({ apiKey: config.geminiApiKey });
 
     const prompt = `
@@ -55,7 +54,6 @@ Return ONLY raw JSON. Do not wrap in markdown tags like \`\`\`json. Just return 
 
     logger.info('Requesting system monitoring health analysis from Gemini...');
     
-    // Call the interactions endpoint as specified by the SDK docs
     const interaction = await ai.interactions.create({
       model: 'gemini-3.5-flash',
       input: prompt,
@@ -63,7 +61,7 @@ Return ONLY raw JSON. Do not wrap in markdown tags like \`\`\`json. Just return 
 
     const outputText = interaction.output_text || '';
     
-    // Sanitize the response output to verify it is valid JSON
+    // Extract raw JSON content from LLM response if wrapped in markdown code blocks
     let sanitizedJson = outputText.trim();
     if (sanitizedJson.startsWith('```')) {
       const jsonStart = sanitizedJson.indexOf('{');

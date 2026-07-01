@@ -10,11 +10,9 @@ import summaryRouter from './routes/summary.js';
 
 const app = express();
 
-// Standard middlewares
 app.use(cors());
 app.use(express.json());
 
-// Lightweight Request Logger middleware
 app.use((req, res, next) => {
   const start = Date.now();
   res.on('finish', () => {
@@ -24,21 +22,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// API Routes
 app.use('/health', healthRouter);
 app.use('/metrics', metricsDirectRouter);
 app.use('/summary', summaryRouter);
 app.use('/api/system', systemRouter);
 app.use('/api/metrics', metricsRouter);
 
-// 404 Handler for undefined routes
 app.use((req, res, next) => {
   const err = new Error(`Resource not found: ${req.originalUrl}`);
   err.statusCode = 404;
   next(err);
 });
 
-// Centralized error handling middleware
 app.use(errorHandler);
 
 export default app;

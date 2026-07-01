@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
   res.status(200).json({
     status: 'UP',
     lastCollectionTimestamp: currentMetric ? currentMetric.timestamp : null,
-    uptime: Math.floor(process.uptime()), // API server process uptime in seconds
+    uptime: Math.floor(process.uptime()),
   });
 });
 

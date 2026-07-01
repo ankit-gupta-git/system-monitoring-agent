@@ -65,7 +65,7 @@ export const getDynamicSystemMetrics = async () => {
     si.networkStats(),
   ]);
 
-  // Handle cases where networkStats might be empty or missing properties
+  // Guard against missing properties or empty networkStats lists from systeminformation
   const sanitizedNetwork = (networkStats || []).map(stat => ({
     iface: stat.iface,
     operstate: stat.operstate,

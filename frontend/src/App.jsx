@@ -28,7 +28,6 @@ function App() {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState(null);
 
-  // Fetch static system specifications once on load
   const fetchStaticInfo = useCallback(async () => {
     try {
       const res = await fetch(`${BACKEND_URL}/api/system/static`);
@@ -40,7 +39,6 @@ function App() {
     }
   }, []);
 
-  // Fetch dynamic system metrics
   const fetchMetrics = useCallback(async (isManual = false) => {
     if (isManual) setIsRefreshing(true);
     try {
@@ -61,7 +59,6 @@ function App() {
     }
   }, []);
 
-  // Fetch AI system health summary
   const fetchAiSummary = useCallback(async () => {
     setAiLoading(true);
     setAiError(null);
@@ -77,14 +74,12 @@ function App() {
     }
   }, []);
 
-  // Set up initial trigger
   useEffect(() => {
     fetchStaticInfo();
     fetchMetrics();
     fetchAiSummary();
   }, [fetchStaticInfo, fetchMetrics, fetchAiSummary]);
 
-  // Set up 5 seconds periodic polling
   useEffect(() => {
     const timer = setInterval(() => {
       fetchMetrics();
@@ -93,7 +88,6 @@ function App() {
     return () => clearInterval(timer);
   }, [fetchMetrics]);
 
-  // Helper formatting utility functions
   const formatBytes = (bytes) => {
     if (!bytes || isNaN(bytes)) return '0 B';
     const k = 1024;
@@ -122,7 +116,6 @@ function App() {
     return parts.join(' ');
   };
 
-  // Dynamic utility class selection for progress bars
   const getProgressColor = (percentage) => {
     if (percentage > 85) return 'bg-gradient-to-r from-red-500 to-rose-600 shadow-[0_0_10px_rgba(239,68,68,0.4)]';
     if (percentage > 60) return 'bg-gradient-to-r from-amber-500 to-orange-600 shadow-[0_0_10px_rgba(245,158,11,0.4)]';
@@ -138,7 +131,6 @@ function App() {
   return (
     <div className="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col font-sans selection:bg-violet-500/20 selection:text-violet-200">
       
-      {/* Header Bar */}
       <header className="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -171,10 +163,8 @@ function App() {
         </div>
       </header>
 
-      {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        {/* Error Alert Box */}
         {error && (
           <div className="mb-6 p-4 bg-red-950/30 border border-red-900/50 rounded-2xl flex gap-3 text-red-200 text-sm">
             <AlertTriangle className="h-5 w-5 text-red-500 shrink-0" />
@@ -185,7 +175,6 @@ function App() {
           </div>
         )}
 
-        {/* Static Info Row */}
         {staticInfo && (
           <div className="mb-8 p-6 bg-zinc-900/40 border border-zinc-900/80 backdrop-blur-sm rounded-2xl grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex items-start gap-3">
@@ -219,7 +208,6 @@ function App() {
           </div>
         )}
 
-        {/* Loading Spinner */}
         {loading && !metrics ? (
           <div className="flex flex-col items-center justify-center py-20 gap-4 text-zinc-500">
             <RefreshCw className="h-10 w-10 animate-spin text-violet-500" />
@@ -229,7 +217,6 @@ function App() {
           metrics && (
             <div className="space-y-8 animate-fadeIn">
               
-              {/* AI DIAGNOSIS SECTION */}
               <div className="p-6 rounded-3xl border border-violet-500/10 bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 relative overflow-hidden group">
                 <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-violet-500/5 blur-3xl group-hover:bg-violet-500/10 transition-all duration-500" />
                 
@@ -292,10 +279,8 @@ function App() {
                 )}
               </div>
 
-              {/* Responsive Cards Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                {/* CPU CARD */}
                 <div className="bg-zinc-900/60 border border-zinc-900 backdrop-blur-md rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:border-violet-500/20 transition-all duration-300 group">
                   <div className="flex justify-between items-start mb-6">
                     <div className="flex items-center gap-3">
@@ -312,7 +297,6 @@ function App() {
                     </span>
                   </div>
 
-                  {/* Progress bar */}
                   <div className="w-full bg-zinc-800/80 rounded-full h-3.5 mb-6 overflow-hidden p-0.5 border border-zinc-800">
                     <div
                       className={`h-2 rounded-full transition-all duration-500 ease-out ${getProgressColor(metrics.cpu.currentLoad)}`}
@@ -320,7 +304,6 @@ function App() {
                     />
                   </div>
 
-                  {/* CPU details */}
                   <div className="grid grid-cols-3 gap-2 text-center border-t border-zinc-800/50 pt-4">
                     <div>
                       <span className="text-[10px] text-zinc-500 uppercase tracking-wider block">User</span>
@@ -337,7 +320,6 @@ function App() {
                   </div>
                 </div>
 
-                {/* MEMORY CARD */}
                 <div className="bg-zinc-900/60 border border-zinc-900 backdrop-blur-md rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:border-violet-500/20 transition-all duration-300 group">
                   <div className="flex justify-between items-start mb-6">
                     <div className="flex items-center gap-3">
@@ -354,7 +336,6 @@ function App() {
                     </span>
                   </div>
 
-                  {/* Progress bar */}
                   <div className="w-full bg-zinc-800/80 rounded-full h-3.5 mb-6 overflow-hidden p-0.5 border border-zinc-800">
                     <div
                       className={`h-2 rounded-full transition-all duration-500 ease-out ${getProgressColor(metrics.memory.usagePercentage)}`}
@@ -362,7 +343,6 @@ function App() {
                     />
                   </div>
 
-                  {/* RAM Details */}
                   <div className="grid grid-cols-2 gap-4 border-t border-zinc-800/50 pt-4 text-xs">
                     <div className="flex justify-between">
                       <span className="text-zinc-500">Used (Active)</span>
@@ -375,7 +355,6 @@ function App() {
                   </div>
                 </div>
 
-                {/* UPTIME & SYSTEM HEALTH CARD */}
                 <div className="bg-zinc-900/60 border border-zinc-900 backdrop-blur-md rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:border-violet-500/20 transition-all duration-300 group md:col-span-2 lg:col-span-1">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400 group-hover:bg-violet-500 group-hover:text-white transition-all duration-300">
@@ -393,7 +372,6 @@ function App() {
                     </span>
                   </div>
 
-                  {/* Last Fetch Metadata */}
                   <div className="border-t border-zinc-800/50 pt-4 flex items-center justify-between text-xs text-zinc-500">
                     <span>Last Polled</span>
                     <span className="font-medium text-zinc-400">
@@ -404,10 +382,8 @@ function App() {
 
               </div>
 
-              {/* SECOND ROW - FILESYSTEMS & NETWORK */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 
-                {/* DISKS AND STORAGE CARD */}
                 <div className="bg-zinc-900/60 border border-zinc-900 backdrop-blur-md rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:border-violet-500/20 transition-all duration-300">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400">
@@ -419,7 +395,6 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Disk lists */}
                   <div className="space-y-5">
                     {metrics.filesystems.map((fsInfo, idx) => (
                       <div key={idx} className="bg-zinc-950/50 border border-zinc-900 rounded-2xl p-4 space-y-3">
@@ -433,7 +408,6 @@ function App() {
                           </span>
                         </div>
 
-                        {/* Progress Bar */}
                         <div className="w-full bg-zinc-900 rounded-full h-2.5 overflow-hidden">
                           <div
                             className={`h-full rounded-full transition-all duration-500 ${getProgressColor(fsInfo.usePercentage)}`}
@@ -450,7 +424,6 @@ function App() {
                   </div>
                 </div>
 
-                {/* NETWORK INTERFACES CARD */}
                 <div className="bg-zinc-900/60 border border-zinc-900 backdrop-blur-md rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:border-violet-500/20 transition-all duration-300">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400">
@@ -472,7 +445,6 @@ function App() {
                           </span>
                         </div>
 
-                        {/* Rx/Tx rates */}
                         <div className="grid grid-cols-2 gap-4">
                           <div className="p-3 bg-zinc-900/50 rounded-xl flex items-center gap-3">
                             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
@@ -508,7 +480,6 @@ function App() {
         )}
       </main>
 
-      {/* Footer bar */}
       <footer className="border-t border-zinc-900 py-6 text-center text-xs text-zinc-600 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 space-y-2">
           <p>© 2026 System Monitoring Agent. Built with Node.js, Express, React, and Tailwind CSS.</p>

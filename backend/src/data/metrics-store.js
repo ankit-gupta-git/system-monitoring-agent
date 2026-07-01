@@ -48,7 +48,6 @@ class MetricsStore {
   async addMetric(metric) {
     this.metrics.push(metric);
     
-    // Maintain sliding window history limit
     if (this.metrics.length > this.limit) {
       this.metrics.shift();
     }
@@ -83,7 +82,6 @@ class MetricsStore {
   async clear() {
     this.metrics = [];
     try {
-      // Clear persistence file by writing empty object
       await fs.writeFile(DATA_FILE_PATH, JSON.stringify({}, null, 2), 'utf-8');
       logger.info('Persistent metrics storage cleared successfully.');
     } catch (error) {
